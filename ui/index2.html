@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analizador de Logs de Seguridad</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔍 Analizador de Logs de Seguridad</h1>
+            <p class="subtitle">Detección de actividad sospechosa, fuerza bruta y anomalías en logs de API</p>
+        </header>
+        
+        <div class="dashboard">
+            <div class="controls">
+                <h2>Configuración</h2>
+                
+                <div class="form-group">
+                    <label for="logCount">Cantidad de Logs a Generar</label>
+                    <input type="number" id="logCount" value="100" min="10" max="10000">
+                </div>
+                
+                <div class="form-group">
+                    <label for="maxRequests">Máx. Requests por Minuto</label>
+                    <input type="number" id="maxRequests" value="30" min="1" max="1000">
+                </div>
+                
+                <div class="form-group">
+                    <label for="maxFailedLogins">Máx. Logins Fallidos</label>
+                    <input type="number" id="maxFailedLogins" value="3" min="1" max="50">
+                </div>
+                
+                <div class="form-group">
+                    <label for="timeWindow">Ventana de Tiempo (ms)</label>
+                    <input type="number" id="timeWindow" value="60000" min="1000" max="300000">
+                </div>
+                
+                <div class="form-group">
+                    <label for="minResponseTime">Tiempo Resp. Mínimo (ms)</label>
+                    <input type="number" id="minResponseTime" value="20" min="0" max="1000">
+                </div>
+                
+                <div class="form-group">
+                    <label for="maxResponseTime">Tiempo Resp. Máximo (ms)</label>
+                    <input type="number" id="maxResponseTime" value="2000" min="100" max="10000">
+                </div>
+                
+                <button id="runAnalysis">Ejecutar Análisis</button>
+                <button id="runAsync" style="margin-top: 10px; background-color: var(--success);">Ejecutar Análisis Async</button>
+            </div>
+            
+            <div class="results">
+                <h2>Resultados del Análisis</h2>
+                
+                <div class="loading" id="loadingIndicator">
+                    <div class="spinner"></div>
+                    <p>Analizando logs, por favor espere...</p>
+                </div>
+                
+                <div id="resultsContent">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value" id="totalEvents">0</div>
+                            <div class="stat-label">Eventos Sospechosos</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="suspiciousIPs">0</div>
+                            <div class="stat-label">IPs Sospechosas</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="bruteForceAttacks">0</div>
+                            <div class="stat-label">Ataques Fuerza Bruta</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="endpointsAttacked">0</div>
+                            <div class="stat-label">Endpoints Bajo Ataque</div>
+                        </div>
+                    </div>
+                    
+                    <div class="results-section">
+                        <h3 class="section-title">IPs Sospechosas</h3>
+                        <div id="suspiciousIPsList"></div>
+                    </div>
+                    
+                    <div class="results-section">
+                        <h3 class="section-title">Ataques de Fuerza Bruta Detectados</h3>
+                        <div id="bruteForceList"></div>
+                    </div>
+                    
+                    <div class="results-section">
+                        <h3 class="section-title">Endpoints Bajo Ataque</h3>
+                        <div id="endpointsList"></div>
+                    </div>
+                    
+                    <div class="results-section">
+                        <h3 class="section-title">Anomalías Detectadas</h3>
+                        <div id="anomaliesList"></div>
+                    </div>
+                    
+                    <div class="performance-info">
+                        <p id="performanceTime">Tiempo de análisis: --</p>
+                        <p id="logCountDisplay">Logs procesados: --</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../script/test2.js"></script>
+</body>
+</html>

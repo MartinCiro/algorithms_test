@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LRU Cache Tests</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <h1>🧪 LRU Cache Tests</h1>
+    
+    <div class="test-section">
+        <h2 class="test-title">🔧 Tests Automáticos</h2>
+        <button onclick="runAllTests()">Ejecutar Todos los Tests</button>
+        <button onclick="runPerformanceTest()">Test de Rendimiento</button>
+        <div id="testResults"></div>
+    </div>
+
+    <div class="test-section">
+        <h2 class="test-title">🎮 Prueba Interactiva</h2>
+        <div>
+            <input type="text" id="keyInput" placeholder="Clave" value="key1">
+            <input type="text" id="valueInput" placeholder="Valor" value="value1">
+            <button onclick="putValue()">PUT</button>
+            <button onclick="getValue()">GET</button>
+            <button onclick="clearCache()">CLEAR</button>
+        </div>
+        <div id="interactiveResult" class="test-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2 class="test-title">📊 Estado del Cache</h2>
+        <div id="cacheState" class="cache-visual"></div>
+    </div>
+
+    <script src="../script/test.js"></script>
+</body>
+</html>
