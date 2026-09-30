@@ -30,17 +30,17 @@ Algoritmo diseñado para procesar grandes volúmenes de logs (chunking) y detect
 ### Flujo del LRU Cache
 ```mermaid
 graph LR
-    A[Operación GET/PUT] --> B{¿Existe la clave?}
-    B -->|Sí (GET)| C[Mover nodo al frente de la lista]
-    B -->|Sí (PUT)| D[Actualizar valor y mover al frente]
-    B -->|No (PUT)| E{¿Capacidad máxima alcanzada?}
-    E -->|Sí| F[Eliminar nodo del final (LRU)]
-    E -->|No| G[Insertar nuevo nodo al frente]
-    C --> H[Actualizar HashMap]
+    A["Operación GET/PUT"] --> B{"¿Existe la clave?"}
+    B -->|"Sí (GET)"| C["Mover nodo al frente de la lista"]
+    B -->|"Sí (PUT)"| D["Actualizar valor y mover al frente"]
+    B -->|"No (PUT)"| E{"¿Capacidad máxima alcanzada?"}
+    E -->|"Sí"| F["Eliminar nodo del final (LRU)"]
+    E -->|"No"| G["Insertar nuevo nodo al frente"]
+    C --> H["Actualizar HashMap"]
     D --> H
     F --> H
     G --> H
-    H --> I[Respuesta O(1)]
+    H --> I["Respuesta O(1)"]
     
     style A fill:#e0f2fe,stroke:#0284c7
     style I fill:#dcfce7,stroke:#16a34a
@@ -133,4 +133,3 @@ El módulo de LRU Cache incluye una suite de tests automatizados que validan:
 
 ---
 *Desarrollado como parte de la evaluación técnica para Iyata, enfocándose en la eficiencia algorítmica, la legibilidad del código y la experiencia de usuario.*
-```
